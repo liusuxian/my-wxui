@@ -2,7 +2,7 @@
  * @Author: liusuxian 382185882@qq.com
  * @Date: 2024-09-30 16:44:25
  * @LastEditors: liusuxian 382185882@qq.com
- * @LastEditTime: 2024-10-10 22:22:23
+ * @LastEditTime: 2024-10-11 00:01:12
  * @Description:
  *
  * Copyright (c) 2024 by liusuxian email: 382185882@qq.com, All Rights Reserved.
@@ -93,7 +93,7 @@ Component({
     arrowRight: {
       type: Number,
       optionalTypes: [String],
-      value: 30,
+      value: 0,
     },
     // 单位
     unit: {

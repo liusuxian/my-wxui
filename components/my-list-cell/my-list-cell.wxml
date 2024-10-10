@@ -5,10 +5,13 @@
   style="background-color: {{backgroundColor}}; font-size: {{computed.getSize({size, g_size, unit})}}; color: {{computed.getColor(color, g_color)}}; padding: {{computed.getPadding({padding, g_padding})}}; border-radius: {{utils.addUnit(radius, unit)}}; margin-top: {{utils.addUnit(marginTop, unit)}}; margin-bottom: {{utils.addUnit(marginBottom, unit)}};"
   bindtap="handleClick">
   <slot></slot>
-  <view wx:if="{{!unlined}}" class="my-list-cell__line"
+  <view wx:if="{{!unlined}}" class="my-list-cell__top-line"
+    style="border-top-color: {{computed.getLineColor({lineColor, g_lineColor})}}; left: {{computed.getLineLeft({lineLeft, g_lineLeft, unit})}}; right: {{utils.addUnit(lineRight, unit)}};">
+  </view>
+  <view wx:if="{{!unlined}}" class="my-list-cell__bottom-line"
     style="border-bottom-color: {{computed.getLineColor({lineColor, g_lineColor})}}; left: {{computed.getLineLeft({lineLeft, g_lineLeft, unit})}}; right: {{utils.addUnit(lineRight, unit)}};">
   </view>
   <view wx:if="{{arrow}}" class="my-list-cell__arrow"
-    style="border-color: {{computed.getArrowColor({arrowColor, g_arrowColor})}}; right: {{utils.addUnit(arrowRight, unit)}};">
+    style="border-color: {{computed.getArrowColor({arrowColor, g_arrowColor})}}; margin-right: {{utils.addUnit(arrowRight, unit)}};">
   </view>
 </view>

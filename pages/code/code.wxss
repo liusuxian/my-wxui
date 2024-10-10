@@ -1,1 +1,7 @@
-/* pages/code/code.wxss */
+.content {
+  background: transparent;
+}
+
+.custom-list-cell {
+  background: rgba(255, 255, 255, 0.8);
+}
