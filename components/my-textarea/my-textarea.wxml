@@ -1,0 +1,42 @@
+<wxs src="../my-wxs/utils.wxs" module="utils"></wxs>
+
+<view class="custom-class {{utils.bem('textarea', [flexStart ? 'flex-start' : '', lineLeft ? 'left' : ''])}}"
+  style="padding: {{padding}}; background-color: {{backgroundColor}}; margin-top: {{utils.addUnit(marginTop, unit)}}; border-radius: {{utils.addUnit(radius, unit)}};"
+  bindtap="fieldClick">
+  <view wx:if="{{borderTop && !textareaBorder}}" class="my-textarea__border-top"
+    style="border-top-color: {{borderColor}};">
+  </view>
+  <view wx:if="{{borderBottom && !textareaBorder}}" class="my-textarea__border-bottom"
+    style="border-bottom-color: {{borderColor}};">
+  </view>
+  <view wx:if="{{textareaBorder}}" class="my-textarea__border"
+    style="border-color: {{borderColor}}; border-radius: {{utils.addUnit(radius, unit)}};">
+  </view>
+  <view wx:if="{{required}}" class="{{utils.bem('textarea-required', [flexStart ? 'flex-start' : ''])}}"
+    style="color: {{requiredColor || g_requiredColor}}; top: {{flexStart ? utils.addUnit(requiredTop, unit) : '50%'}};">
+    *
+  </view>
+  <view wx:if="{{label}}" class="my-textarea__label"
+    style="font-size: {{utils.addUnit(labelSize, unit)}}; color: {{labelColor}}; min-width: {{utils.addUnit(labelWidth, unit)}};">
+    {{label}}
+  </view>
+  <slot name="left"></slot>
+  <view class="my-textarea__flex-1">
+    <textarea class="my-textarea__self {{textRight ? 'my-textarea__text-right' : ''}}"
+      style="height: {{utils.addUnit(height, unit)}}; min-height: {{utils.addUnit(minHeight, unit)}}; font-size: {{utils.addUnit(size, unit)}}; color: {{color}};"
+      placeholder-class="my-textarea__placeholder" name="{{name}}" model:value="{{value}}"
+      placeholder="{{value ? '' : placeholder}}" placeholder-style="{{placeholderStyl}}" disabled="{{disabled}}"
+      cursor-spacing="{{cursorSpacing}}" maxlength="{{maxlength}}" focus="{{focused}}" auto-height="{{autoHeight}}"
+      fixed="{{fixed}}" show-confirm-bar="{{showConfirmBar}}" cursor="{{cursor}}" selection-start="{{selectionStart}}"
+      selection-end="{{selectionEnd}}" adjust-position="{{adjustPosition}}" hold-keyboard="{{holdKeyboard}}"
+      disable-default-padding="{{disableDefaultPadding}}" confirm-type="{{confirmType}}" confirm-hold="{{confirmHold}}"
+      bindfocus="onFocus" bindblur="onBlur" bindinput="onInput" bindconfirm="onConfirm" bindlinechange="onLinechange"
+      bindkeyboardheightchange="onKeyboardheightchange">
+    </textarea>
+    <view wx:if="{{isCounter}}" class="my-textarea__counter"
+      style="font-size: {{utils.addUnit(counterSize, unit)}}; color: {{counterColor}};">
+      {{maxlength !== -1 ? count+'/'+maxlength:count}}
+    </view>
+  </view>
+  <slot name="right"></slot>
+</view>

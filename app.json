@@ -1,12 +1,16 @@
 {
   "pages": [
+    "pages/code/code",
+    "pages/mine/mine",
     "pages/index/index",
     "pages/logs/logs"
   ],
   "window": {
     "navigationBarTextStyle": "black",
-    "navigationBarTitleText": "Weixin",
-    "navigationBarBackgroundColor": "#ffffff"
+    "navigationBarTitleText": "my-wxui",
+    "navigationBarBackgroundColor": "#ffffff",
+    "backgroundColor": "#fff",
+    "navigationStyle": "custom"
   },
   "style": "v2",
   "componentFramework": "glass-easel",

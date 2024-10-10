@@ -1,0 +1,18 @@
+<wxs src="../my-wxs/utils.wxs" module="utils"></wxs>
+<wxs src="../my-wxs/style.wxs" module="style"></wxs>
+
+<view class="custom-class my-collapse">
+  <view class="{{utils.bem('collapse-head', {opacity: disabled})}}" style="{{style(hdCustomStyle)}}"
+    catchtap="handleClick">
+    <slot name="title"></slot>
+    <view wx:if="{{arrow}}" class="{{utils.bem('collapse-icon', ['arrowdown', isOpen ? 'arrowdown-active' : ''])}}"
+      style="{{style(arrowCustomStyle)}}">
+    </view>
+  </view>
+  <view class="my-collapse-body_box"
+    style="background-color: {{bdBgColor}}; width: {{utils.addUnit(bdWidth, unit)}}; height: {{isOpen ? utils.addUnit(height, unit) : 0}};">
+    <view class="{{utils.bem('collapse-body', {transform: height === 'auto', show: isOpen && height === 'auto'})}}">
+      <slot name="content"></slot>
+    </view>
+  </view>
+</view>

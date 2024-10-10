@@ -1,0 +1,30 @@
+/*
+ * @Author: liusuxian 382185882@qq.com
+ * @Date: 2024-10-07 21:21:17
+ * @LastEditors: liusuxian 382185882@qq.com
+ * @LastEditTime: 2024-10-07 23:53:34
+ * @Description:
+ *
+ * Copyright (c) 2024 by liusuxian email: 382185882@qq.com, All Rights Reserved.
+ */
+// 定义一个正则表达式，用于匹配数字，包括整数和小数
+// prettier-ignore
+var REGEXP = getRegExp('^-?\d+(\.\d+)?$');
+
+/**
+ * 为数值添加单位，默认单位为'px'
+ * @param {number|string|null} value - 需要添加单位的数值，可以是数字、字符串或null
+ * @param {string} [unit="px"] - 可选参数，指定要添加的单位，默认为'px'
+ * @returns {string|undefined} - 如果输入值是有效的数字，则返回带单位的字符串；如果输入值为null，则返回undefined
+ */
+function addUnit(value, unit = "px") {
+  // 检查输入值是否为null
+  if (value === null) {
+    return undefined;
+  }
+
+  // 使用正则表达式测试输入值是否为有效数字
+  return REGEXP.test("" + value) ? value + unit : value;
+}
+
+module.exports = addUnit;

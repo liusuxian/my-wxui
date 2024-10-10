@@ -1,0 +1,8 @@
+<wxs src="./my-row.wxs" module="computed"></wxs>
+<wxs src="../my-wxs/utils.wxs" module="utils"></wxs>
+
+<view
+  class="custom-class {{utils.bem('row', ['box', isFlex ? 'flex' : '', justify !== 'start' ? justify : '', align !== 'top' ? align : ''])}}"
+  style="{{computed.rootStyle({marginTop, marginBottom, gutter, unit})}}">
+  <slot></slot>
+</view>

@@ -1,0 +1,52 @@
+:host {
+  position: relative;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.my-row__box {
+  position: relative;
+  box-sizing: border-box;
+}
+
+.my-row__box::before,
+.my-row__box::after {
+  display: table;
+  content: "";
+}
+
+.my-row__box::after {
+  clear: both;
+}
+
+.my-row__flex {
+  display: flex !important;
+}
+
+.my-row__middle {
+  align-items: center;
+}
+
+.my-row__bottom {
+  align-items: flex-end;
+}
+
+.my-row__before {
+  display: table;
+}
+
+.my-row__end {
+  justify-content: flex-end;
+}
+
+.my-row__center {
+  justify-content: center;
+}
+
+.my-row__space-around {
+  justify-content: space-around;
+}
+
+.my-row__space-between {
+  justify-content: space-between;
+}

@@ -1,0 +1,15 @@
+<wxs src="../my-wxs/utils.wxs" module="utils"></wxs>
+
+<view wx:if="{{show}}" class="custom-class my-downloading">
+  <view wx:if="{{!custom}}"
+    style="width: {{utils.addUnit(width, unit)}}; height: {{utils.addUnit(height, unit)}}; border-radius: {{utils.addUnit(radius, unit)}}; background-color: {{backgroundColor}};">
+    <image wx:if="{{statusValue === 1}}" class="downloading-icon" src="{{successIcon}}"></image>
+    <view wx:else class="downloading-title" style="color: {{color}}; font-size: {{utils.addUnit(titleSize, unit)}};">
+      {{current}}/{{total}}
+    </view>
+    <view class="downloading-content" style="color: {{color}}; font-size: {{utils.addUnit(contentSize, unit)}};">
+      {{contentText}}
+    </view>
+  </view>
+  <slot wx:else></slot>
+</view>

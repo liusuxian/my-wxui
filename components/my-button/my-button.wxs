@@ -1,0 +1,51 @@
+/*
+ * @Author: liusuxian 382185882@qq.com
+ * @Date: 2024-10-08 19:36:43
+ * @LastEditors: liusuxian 382185882@qq.com
+ * @LastEditTime: 2024-10-08 19:58:09
+ * @Description:
+ *
+ * Copyright (c) 2024 by liusuxian email: 382185882@qq.com, All Rights Reserved.
+ */
+var addUnit = require("../my-wxs/add-unit.wxs");
+
+function getWidth(data) {
+  // medium 184*40 / small 120*40 / mini 58*32
+  var unit = data.unit || "rpx"; // 默认单位
+  var width = addUnit(data.width || 240, unit);
+  var btnWidth = width;
+  // 通过 btnSize 指定的尺寸来更新宽度
+  if (typeof data.btnSize === "string") {
+    btnWidth =
+      {
+        medium: addUnit(368, unit),
+        small: addUnit(240, unit),
+        mini: addUnit(116, unit),
+      }[data.btnSize] || width;
+  }
+
+  return btnWidth;
+}
+
+function getHeight(data) {
+  // medium 184*40 / small 120*40 / mini 58*32
+  var unit = data.unit || "rpx"; // 默认单位
+  var height = addUnit(data.height || data.g_height || 80, unit);
+  var btnHeight = height;
+  // 通过 btnSize 指定的尺寸来更新高度
+  if (typeof data.btnSize === "string") {
+    btnHeight =
+      {
+        medium: addUnit(80, unit),
+        small: addUnit(80, unit),
+        mini: addUnit(64, unit),
+      }[data.btnSize] || height;
+  }
+
+  return btnHeight;
+}
+
+module.exports = {
+  getWidth: getWidth,
+  getHeight: getHeight,
+};

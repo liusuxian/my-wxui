@@ -1,0 +1,33 @@
+/*
+ * @Author: liusuxian 382185882@qq.com
+ * @Date: 2024-10-07 20:52:55
+ * @LastEditors: liusuxian 382185882@qq.com
+ * @LastEditTime: 2024-10-08 18:49:17
+ * @Description:
+ *
+ * Copyright (c) 2024 by liusuxian email: 382185882@qq.com, All Rights Reserved.
+ */
+var style = require("../my-wxs/style.wxs");
+var addUnit = require("../my-wxs/add-unit.wxs");
+
+function rootStyle(data) {
+  var rootStyle = {};
+  var unit = data.unit || "rpx"; // 默认单位
+
+  if (data.marginTop) {
+    rootStyle["margin-top"] = addUnit(data.marginTop, unit);
+  }
+  if (data.marginBottom) {
+    rootStyle["margin-bottom"] = addUnit(data.marginBottom, unit);
+  }
+  if (data.gutter) {
+    rootStyle["margin-left"] = addUnit(-data.gutter / 2, unit);
+    rootStyle["margin-right"] = addUnit(-data.gutter / 2, unit);
+  }
+
+  return style(rootStyle);
+}
+
+module.exports = {
+  rootStyle: rootStyle,
+};

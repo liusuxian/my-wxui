@@ -1,0 +1,74 @@
+/*
+ * @Author: liusuxian 382185882@qq.com
+ * @Date: 2024-10-07 21:21:17
+ * @LastEditors: liusuxian 382185882@qq.com
+ * @LastEditTime: 2024-10-09 00:19:03
+ * @Description:
+ *
+ * Copyright (c) 2024 by liusuxian email: 382185882@qq.com, All Rights Reserved.
+ */
+// 引入数组处理模块
+var array = require("./array.wxs");
+// 引入对象处理模块
+var object = require("./object.wxs");
+// 定义样式前缀
+var PREFIX = "my-";
+
+/**
+ * 将名称和修饰符组合成BEM命名格式的字符串
+ * @param {string} name - 基础名称
+ * @param {Array<string>} mods - 修饰符数组
+ * @returns {string} - 组合后的BEM命名字符串
+ */
+function join(name, mods) {
+  name = PREFIX + name; // 添加前缀
+  mods = mods.map(function (mod) {
+    // 遍历修饰符数组
+    return name + "__" + mod; // 拼接修饰符
+  });
+  mods.unshift(name); // 将基础名称添加到数组开头
+  return mods.join(" "); // 将数组转换为字符串并返回
+}
+
+/**
+ * 遍历配置对象，提取修饰符
+ * @param {Array<string>} mods - 修饰符数组
+ * @param {string|number|array|object} conf - 配置对象
+ */
+function traversing(mods, conf) {
+  if (!conf) {
+    // 如果配置为空，则直接返回
+    return;
+  }
+
+  if (typeof conf === "string" || typeof conf === "number") {
+    // 如果配置是字符串或数字
+    mods.push(conf); // 直接添加到修饰符数组
+  } else if (array.isArray(conf)) {
+    // 如果配置是数组
+    conf.forEach(function (item) {
+      // 遍历数组
+      traversing(mods, item); // 递归调用
+    });
+  } else if (typeof conf === "object") {
+    // 如果配置是对象
+    object.keys(conf).forEach(function (key) {
+      // 遍历对象的键
+      conf[key] && mods.push(key); // 如果值为真，则添加键到修饰符数组
+    });
+  }
+}
+
+/**
+ * 生成BEM命名字符串
+ * @param {string} name - 基础名称
+ * @param {string|number|array|object} conf - 配置对象
+ * @returns {string} - BEM命名字符串
+ */
+function bem(name, conf) {
+  var mods = []; // 初始化修饰符数组
+  traversing(mods, conf); // 遍历配置，提取修饰符
+  return join(name, mods); // 组合并返回BEM命名字符串
+}
+
+module.exports = bem;

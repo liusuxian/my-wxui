@@ -1,0 +1,38 @@
+<wxs src="./my-navigation-bar.wxs" module="computed"></wxs>
+<wxs src="../my-wxs/utils.wxs" module="utils"></wxs>
+
+<!-- 占位元素 -->
+<view wx:if="{{fixed &&  placeholder}}" style="height: {{utils.addUnit(height, 'px')}};"></view>
+<view
+  class="custom-class {{utils.bem('navbar', [opacity > 0.85 && border ? 'line' : '', fixed ? 'fixed' : '', backdropFilter && dropDownOpacity > 0 ? 'backdrop-filter' : ''])}}"
+  style="height: {{utils.addUnit(height, 'px')}}; background: {{computed.getBgColor({isOpacity, background, opacity})}}; opacity: {{dropDownOpacity}}; z-index: {{fixed ? zIndex : 'auto'}};">
+  <view wx:if="{{safeAreaInsetTop}}" class="my-navbar__status-bar"
+    style="height: {{utils.addUnit(statusBarHeight, 'px')}};">
+  </view>
+  <view class="my-navbar__content"
+    style="height: {{safeAreaInsetTop ? utils.addUnit(height - statusBarHeight, 'px') : utils.addUnit(height, 'px')}};">
+    <view class="my-navbar__left" hover-class="my-navbar__text--hover" hover-stay-time="70" bindtap="onClickLeft">
+      <block wx:if="{{leftArrow || leftText}}">
+        <view wx:if="{{leftArrow}}" class="{{utils.bem('navbar-icon', ['arrowleft'])}}"
+          style="color: {{color}}; font-size: {{utils.addUnit(leftArrowSize, unit)}};">
+        </view>
+        <view wx:if="{{leftText}}" class="my-navbar__text"
+          style="color: {{color}}; font-size: {{utils.addUnit(textSize, unit)}}; margin-left: {{leftArrow ? utils.addUnit(-16, 'px') : 0}};">
+          {{leftText}}
+        </view>
+      </block>
+      <slot wx:else name="left"></slot>
+    </view>
+    <view class="my-navbar__title" style="color: {{color}}; font-size: {{utils.addUnit(titleSize, unit)}};">
+      <block wx:if="{{title}}">{{title}}</block>
+      <slot wx:else name="title"></slot>
+    </view>
+    <view class="my-navbar__right" hover-class="my-navbar__text--hover" hover-stay-time="70" bindtap="onClickRight">
+      <view wx:if="{{rightText}}" class="my-navbar__text"
+        style="color: {{color}}; font-size: {{utils.addUnit(textSize, unit)}};">
+        {{rightText}}
+      </view>
+      <slot wx:else name="right"></slot>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,5 @@
+<wxs src="./my-col.wxs" module="computed"></wxs>
+
+<view class="custom-class {{classList}}" style="{{computed.rootStyle({gutter, unit})}}">
+  <slot></slot>
+</view>

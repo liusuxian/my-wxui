@@ -1,0 +1,95 @@
+@font-face {
+  font-family: "myNavigationBar";
+  src: url("data:font/ttf;charset=utf-8;base64,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")
+    format("truetype");
+  font-weight: normal;
+}
+
+.my-navbar-icon {
+  font-family: "myNavigationBar" !important;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.my-navbar-icon__arrowleft:before {
+  content: "\e68b";
+}
+
+.my-navbar {
+  width: 100%;
+  transition: opacity 0.4s;
+}
+
+.my-navbar__line::after {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  content: "";
+  border-bottom: 1px solid #ebedf0;
+  -webkit-transform: scaleY(0.5);
+  transform: scaleY(0.5);
+}
+
+.my-navbar__fixed {
+  position: fixed;
+  left: 0;
+  top: 0;
+  transform: translateZ(0);
+}
+
+.my-navbar__backdrop-filter {
+  /* Safari for macOS & iOS */
+  -webkit-backdrop-filter: blur(15px);
+  /* Google Chrome */
+  backdrop-filter: blur(15px);
+}
+
+.my-navbar__status-bar {
+  width: 100%;
+}
+
+.my-navbar__content {
+  position: relative;
+}
+
+.my-navbar__text {
+  display: inline-block;
+  vertical-align: middle;
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+.my-navbar__text--hover {
+  background-color: #f2f3f5;
+}
+
+.my-navbar__title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 60%;
+  height: 100%;
+  margin: 0 auto;
+  font-weight: 500;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.my-navbar__left,
+.my-navbar__right {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+}
+
+.my-navbar__left {
+  left: 16px;
+}
+
+.my-navbar__right {
+  right: 16px;
+}

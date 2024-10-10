@@ -1,0 +1,7 @@
+<wxs src="./my-icon.wxs" module="computed"></wxs>
+
+<text
+  class="custom-class {{customPrefix ? '' : 'my-icon'}} {{'my-icon-' + name}} {{customPrefix}} {{customPrefix ? name : ''}}"
+  style="color: {{computed.getColor({color, g_color})}}; font-size: {{computed.getSize({size, g_size, unit, g_unit})}}; font-weight: {{bold ? 'bold' : 'normal'}}; margin: {{margin}};"
+  bindtap="handleClick">
+</text>

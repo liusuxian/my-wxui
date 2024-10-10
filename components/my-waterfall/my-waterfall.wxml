@@ -1,0 +1,15 @@
+<wxs src="../my-wxs/utils.wxs" module="utils"></wxs>
+
+<view class="custom-class my-waterfall-box"
+  style="padding-left: {{utils.addUnit(leftGap, unit)}}; padding-right: {{utils.addUnit(rightGap, unit)}}; background: {{backgroundColor}}; border-radius: {{utils.addUnit(radius, unit)}};">
+  <view class="my-waterfall-list" id="my-waterfall-left" style="margin-right: {{utils.addUnit(columnGap, unit)}}">
+    <block wx:for="{{leftList}}" wx:key="index">
+      <item index="{{index}}" item="{{item}}" isList="{{isList}}"></item>
+    </block>
+  </view>
+  <view wx:if="{{columnCount > 1}}" class="my-waterfall-list" id="my-waterfall-right">
+    <block wx:for="{{rightList}}" wx:key="index">
+      <item index="{{index}}" item="{{item}}" isList="{{isList}}"></item>
+    </block>
+  </view>
+</view>

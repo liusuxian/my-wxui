@@ -1,0 +1,42 @@
+<wxs src="../my-wxs/utils.wxs" module="utils"></wxs>
+
+<view>
+  <view class="custom-class my-dropdown-list"
+    style="width: {{selectWidth ? utils.addUnit(selectWidth, unit) : '100%' }}; height: {{selectHeight ? utils.addUnit(selectHeight, unit) : '100%' }};">
+    <view wx:if="{{!selectCustom}}" class="my-dropdown"
+      style="background-color: {{selectBackgroundColor}}; color: {{selectColor}}; font-size: {{utils.addUnit(fontSize, unit)}}; border-color: {{borderColor}}; border-radius: {{utils.addUnit(radius, unit)}};"
+      data-index="-1" bindtap="dropDownList">
+      {{selectText}}
+      <view class="{{utils.bem('dropdown-animation', {show: show})}}">
+        <view class="{{utils.bem('dropdown-list-icon', ['arrowdown'])}}"
+          style="color: {{selectIconColor}}; font-size: {{utils.addUnit(selectIconSize, unit)}};">
+        </view>
+      </view>
+    </view>
+    <slot wx:else name="selectionbox"></slot>
+    <view class="{{utils.bem('dropdown-view', {show: show})}}"
+      style="height: {{show ? utils.addUnit(height, unit) : 0}}; top: {{utils.addUnit(top, unit)}};">
+      <view wx:if="{{!customOption}}" class="my-selected-list"
+        style="height: {{utils.addUnit(height, unit)}}; background-color: {{backgroundColor}}; border-color: {{borderColor}}; border-radius: {{utils.addUnit(radius, unit)}};">
+        <scroll-view scroll-y class="my-selected-scroll" style="height: {{utils.addUnit(height, unit)}};">
+          <block wx:for="{{options}}" wx:key="index">
+            <view style="background-color: #fff;">
+              <view class="{{utils.bem('selected-cell', {hover: true})}}"
+                style="font-size: {{utils.addUnit(fontSize, unit)}}; color: {{fontColor}};" data-index="{{index}}"
+                bindtap="dropDownList">
+                <text class="my-selected-cell-text">{{item.text}}</text>
+                <view wx:if="{{!(options.length-1 === index)}}" class="my-selected-cell__line"
+                  style="border-bottom-color: {{lineColor}};">
+                </view>
+              </view>
+            </view>
+          </block>
+        </scroll-view>
+      </view>
+      <slot wx:else name="dropdownbox"></slot>
+    </view>
+  </view>
+  <view class="my-dropdown__mask" style="background-color: {{maskBackground}};" wx:if="{{isMask && show}}"
+    bindtap="maskClick">
+  </view>
+</view>

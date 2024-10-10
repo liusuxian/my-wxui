@@ -1,0 +1,24 @@
+/*
+ * @Author: liusuxian 382185882@qq.com
+ * @Date: 2024-10-08 21:47:55
+ * @LastEditors: liusuxian 382185882@qq.com
+ * @LastEditTime: 2024-10-08 21:53:54
+ * @Description:
+ *
+ * Copyright (c) 2024 by liusuxian email: 382185882@qq.com, All Rights Reserved.
+ */
+var addUnit = require("../my-wxs/add-unit.wxs");
+
+function getColor(data) {
+  return data.color || data.g_color || "#999";
+}
+
+function getSize(data) {
+  var unit = data.unit || data.g_unit || "rpx"; // 默认单位
+  return addUnit(data.size || data.g_size || 64, unit);
+}
+
+module.exports = {
+  getColor: getColor,
+  getSize: getSize,
+};

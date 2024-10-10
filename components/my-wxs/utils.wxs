@@ -1,0 +1,23 @@
+/*
+ * @Author: liusuxian 382185882@qq.com
+ * @Date: 2024-10-07 21:21:17
+ * @LastEditors: liusuxian 382185882@qq.com
+ * @LastEditTime: 2024-10-07 21:58:15
+ * @Description:
+ *
+ * Copyright (c) 2024 by liusuxian email: 382185882@qq.com, All Rights Reserved.
+ */
+// 引入 bem 模块，用于生成 BEM 类名
+var bem = require("./bem.wxs");
+
+// 引入 memoize 模块，用于缓存函数结果以提高性能
+var memoize = require("./memoize.wxs");
+
+// 引入 addUnit 模块，用于在数值后添加单位
+var addUnit = require("./add-unit.wxs");
+
+module.exports = {
+  bem: memoize(bem),
+  memoize: memoize,
+  addUnit: addUnit,
+};

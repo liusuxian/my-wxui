@@ -1,0 +1,44 @@
+<wxs src="../my-wxs/utils.wxs" module="utils"></wxs>
+
+<view class="custom-class my-upload-box">
+  <view class="my-image-item"
+    style="width: {{utils.addUnit(width, unit)}}; height: {{utils.addUnit(height, unit)}}; border-radius: {{utils.addUnit(radius, unit)}};"
+    wx:for="{{imageList}}" wx:key="index">
+    <image src="{{item}}"
+      style="width: {{utils.addUnit(width, unit)}}; height: {{utils.addUnit(height, unit)}}; border-radius: {{utils.addUnit(radius, unit)}};"
+      catchtap="previewImage" data-index="{{index}}" mode="aspectFill">
+    </image>
+    <view wx:if="{{!forbidDel}}" class="my-image-item__del" style="background: {{delColor || g_danger}};"
+      catchtap="delImage" data-index="{{index}}">
+    </view>
+    <view wx:if="{{statusArr[index] !== '1'}}"
+      class="{{utils.bem('upload-mask', [statusArr[index] === '3' && reUpLoadBtnIcon ? '' : 'noicon'])}}">
+      <view wx:if="{{statusArr[index] === '2'}}" class="my-upload-loading"></view>
+      <view wx:if="{{statusArr[index] === '3'}}" class="{{utils.bem('mask-btn', [reUpLoadBtnIcon ? '' : 'noicon'])}}"
+        hover-class="my-mask-btn__hover" hover-stay-time="150" catchtap="reUpLoad" data-index="{{index}}">
+        <image wx:if="{{reUpLoadBtnIcon}}" class="my-mask-btn__icon" src="{{reUpLoadBtnIcon}}" mode="aspectFill">
+        </image>
+        <text>重新上传</text>
+      </view>
+      <text class="{{utils.bem('tips', [statusArr[index] === '3' ? 'error': ''])}}">
+        {{statusArr[index] === '2' ? '上传中...' : uploadFailedText}}
+      </text>
+    </view>
+  </view>
+  <view wx:if="{{!forbidAdd && imageList.length < limit}}"
+    class="my-upload-add {{borderColor !== 'transparent' ? 'my-upload__border' : 'my-upload__unborder'}}"
+    style="width: {{utils.addUnit(width, unit)}}; height: {{utils.addUnit(height, unit)}}; background: {{background}}; border-radius: {{utils.addUnit(radius, unit)}}; border-color: {{borderColor}}; border-style: {{borderSytle}};"
+    bindtap="chooseImage">
+    <view wx:if="{{!custom}}" class="{{utils.bem('upload-icon', ['plus'])}}"
+      style="color: {{addColor}}; font-size: {{utils.addUnit(addSize, unit)}};">
+    </view>
+    <slot wx:else name="uploadbtnbox"></slot>
+  </view>
+  <view wx:if="{{showAiImageBtn && imageList.length < limit}}"
+    style="width: {{utils.addUnit(width, unit)}}; height: {{utils.addUnit(height, unit)}}; background: {{background}}; border-radius: {{utils.addUnit(radius, unit)}};"
+    bindtap="clickAiImage">
+    <image wx:if="{{aiImageBtnIcon}}" class="my-aiimage-btn" src="{{aiImageBtnIcon}}" mode="aspectFill">
+    </image>
+    <slot wx:else name="aiimagebtnbox"></slot>
+  </view>
+</view>

@@ -1,0 +1,34 @@
+<wxs src="../my-wxs/utils.wxs" module="utils"></wxs>
+
+<view class="custom-class my-input__wrap"
+  style="padding: {{padding || g_padding}}; background-color: {{backgroundColor || g_backgroundColor}}; border-radius: {{utils.addUnit(radius || g_radius, unit)}}; margin-top: {{utils.addUnit(marginTop, unit)}};"
+  bindtap="fieldClick">
+  <view wx:if="{{borderTop && !inputBorder}}" class="my-input__border-top" style="border-top-color: {{borderColor}};">
+  </view>
+  <view wx:if="{{borderBottom && !inputBorder}}" class="my-input__border-bottom {{lineLeft ? 'my-line__left' : ''}}"
+    style="border-bottom-color: {{borderColor}};">
+  </view>
+  <view wx:if="{{inputBorder}}" class="my-input__border"
+    style="border-color: {{borderColor}}; border-radius: {{utils.addUnit(radius || g_radius, unit)}};">
+  </view>
+  <view wx:if="{{required}}" class="my-input__required" style="color: {{requiredColor || danger}};">*</view>
+  <view wx:if="{{label}}" class="my-input__label"
+    style="font-size: {{utils.addUnit(labelSize || g_labelSize, unit)}}; color: {{labelColor || g_labelColor}}; min-width: {{utils.addUnit(labelWidth, unit)}};">
+    {{label}}
+  </view>
+  <slot name="left"></slot>
+  <input class="my-input__self {{textRight ? 'my-text__right' : ''}}"
+    style="font-size: {{utils.addUnit(size || g_size, unit)}}; color: {{color || g_color}}"
+    placeholder-class="my-input__placeholder" type="{{type}}" name="{{name}}" model:value="{{value}}"
+    password="{{password}}" placeholder="{{value ? '' : placeholder}}" placeholder-style="{{placeholderStyl}}"
+    disabled="{{disabled}}" cursor-spacing="{{cursorSpacing}}" maxlength="{{maxlength}}" focus="{{focused}}"
+    confirm-type="{{confirmType}}" confirm-hold="{{confirmHold}}" cursor="{{cursor}}"
+    selection-start="{{selectionStart}}" selection-end="{{selectionEnd}}" adjust-position="{{adjustPosition}}"
+    hold-keyboard="{{holdKeyboard}}" bindfocus="onFocus" bindblur="onBlur" bindinput="onInput" bindconfirm="onConfirm"
+    bindkeyboardheightchange="onKeyboardheightchange">
+  </input>
+  <icon wx:if="{{clearable && value != ''}}" type="clear" size="{{utils.addUnit(clearSize, unit)}}"
+    color="{{clearColor}}" catchtap="onClear">
+  </icon>
+  <slot name="right"></slot>
+</view>

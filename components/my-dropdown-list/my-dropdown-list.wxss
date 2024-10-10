@@ -1,0 +1,101 @@
+@font-face {
+  font-family: "myDropdownList";
+  src: url("data:font/ttf;charset=utf-8;base64,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")
+    format("truetype");
+  font-weight: normal;
+}
+
+.my-dropdown-list-icon {
+  font-family: "myDropdownList" !important;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.my-dropdown-list-icon__arrowdown:before {
+  content: "\e61e";
+}
+
+.my-dropdown-list {
+  position: relative;
+}
+
+.my-dropdown-view {
+  width: 100%;
+  position: absolute;
+  z-index: -99;
+  left: 0;
+  opacity: 0;
+  transition: all 0.2s ease-in-out;
+  background-color: transparent;
+}
+
+.my-dropdown-view__show {
+  opacity: 1;
+  z-index: 996;
+}
+
+.my-dropdown {
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid #ccc;
+  padding: 20rpx 29rpx;
+  font-weight: 400;
+  line-height: 48rpx;
+}
+
+.my-dropdown-animation {
+  display: inline-block;
+  transform: rotate(0deg);
+  transition: all 0.2s;
+}
+
+.my-dropdown-animation__show {
+  transform: rotate(180deg);
+}
+
+.my-selected-list {
+  border: 1px solid #ccc;
+  overflow: hidden;
+  transform: translateZ(0);
+  box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
+}
+
+.my-selected-scroll {
+  width: calc(100% + 2px);
+}
+
+.my-selected-scroll ::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  color: transparent;
+}
+
+.my-selected-cell {
+  position: relative;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.my-selected-cell__hover:active {
+  background-color: rgba(0, 0, 0, 0.1) !important;
+}
+
+.my-selected-cell-text {
+  display: flex;
+  align-items: center;
+  font-weight: 400;
+  line-height: 48rpx;
+  padding: 20rpx 29rpx !important;
+}
+
+.my-selected-cell__line {
+  position: absolute;
+  border-bottom: 1px solid #ccc;
+  -webkit-transform: scaleY(0.5) translateZ(0);
+  transform: scaleY(0.5) translateZ(0);
+  transform-origin: 0 100%;
+  left: 30rpx;
+  right: 30rpx;
+  bottom: 0;
+  pointer-events: none;
+}

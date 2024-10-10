@@ -1,0 +1,16 @@
+.my-goods-action {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  box-sizing: initial;
+  background-color: #fff;
+  z-index: 997;
+}
+
+.my-goods-action__safe {
+  padding-bottom: env(safe-area-inset-bottom);
+}

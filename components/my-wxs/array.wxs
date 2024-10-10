@@ -1,0 +1,21 @@
+/*
+ * @Author: liusuxian 382185882@qq.com
+ * @Date: 2024-10-07 21:21:17
+ * @LastEditors: liusuxian 382185882@qq.com
+ * @LastEditTime: 2024-10-07 21:49:48
+ * @Description:
+ *
+ * Copyright (c) 2024 by liusuxian email: 382185882@qq.com, All Rights Reserved.
+ */
+/**
+ * 判断给定的值是否为数组。
+ *
+ * @param {any} array - 需要检查的值。
+ * @returns {boolean} 如果值是数组，则返回true，否则返回false。
+ */
+function isArray(array) {
+  // 检查array是否存在且其构造函数是否为"Array"
+  return array && array.constructor === "Array";
+}
+
+module.exports.isArray = isArray;

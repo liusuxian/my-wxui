@@ -1,0 +1,80 @@
+/*
+ * @Author: liusuxian 382185882@qq.com
+ * @Date: 2024-10-07 21:21:17
+ * @LastEditors: liusuxian 382185882@qq.com
+ * @LastEditTime: 2024-10-08 00:46:55
+ * @Description:
+ *
+ * Copyright (c) 2024 by liusuxian email: 382185882@qq.com, All Rights Reserved.
+ */
+// 引入object.wxs模块，用于处理对象相关的操作
+var object = require("./object.wxs");
+// 引入array.wxs模块，用于处理数组相关的操作
+var array = require("./array.wxs");
+
+/**
+ * 将字符串转换为kebab-case格式
+ * @param {string} word - 需要转换的字符串
+ * @returns {string} 转换后的kebab-case格式字符串
+ */
+function kebabCase(word) {
+  // 使用正则表达式匹配所有大写字母，并在每个大写字母前插入短横线，然后将整个字符串转换为小写
+  var newWord = word
+    .replace(getRegExp("[A-Z]", "g"), function (i) {
+      return "-" + i;
+    })
+    .toLowerCase();
+
+  return newWord;
+}
+
+/**
+ * 将样式对象或数组转换为CSS样式字符串
+ * @param {Object|Array} styles - 样式对象或数组
+ * @returns {string} 转换后的CSS样式字符串
+ */
+function doStyle(styles) {
+  // 如果styles是数组，则过滤掉null和空字符串，递归调用style函数处理每个元素，并将结果用分号连接
+  if (array.isArray(styles)) {
+    return styles
+      .filter(function (item) {
+        return item != null && item !== "";
+      })
+      .map(function (item) {
+        return doStyle(item);
+      })
+      .join("; ");
+  }
+
+  // 如果styles是对象，则过滤掉值为null或空字符串的键值对，将键转换为kebab-case格式，并将键值对用冒号连接，最后将所有键值对用分号连接
+  if ("Object" === styles.constructor) {
+    return object
+      .keys(styles)
+      .filter(function (key) {
+        return styles[key] != null && styles[key] !== "";
+      })
+      .map(function (key) {
+        return [kebabCase(key), [styles[key]]].join(": ");
+      })
+      .join("; ");
+  }
+
+  // 如果styles既不是数组也不是对象，则直接返回styles
+  return styles;
+}
+
+/**
+ * 将样式对象或数组转换为CSS样式字符串
+ * @param {Object|Array} styles - 样式对象或数组
+ * @returns {string} 转换后的CSS样式字符串
+ */
+function style(styles) {
+  var result = doStyle(styles).trim(); // 去除尾部空格
+  // 检查result是否以";"结束，考虑兼容性问题
+  if (result && result.charAt(result.length - 1) !== ";") {
+    result += ";";
+  }
+  return result;
+}
+
+module.exports = style;

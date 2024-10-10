@@ -1,0 +1,30 @@
+/*
+ * @Author: liusuxian 382185882@qq.com
+ * @Date: 2024-10-07 21:21:17
+ * @LastEditors: liusuxian 382185882@qq.com
+ * @LastEditTime: 2024-10-08 00:21:18
+ * @Description:
+ *
+ * Copyright (c) 2024 by liusuxian email: 382185882@qq.com, All Rights Reserved.
+ */
+// 定义一个正则表达式，用于匹配大括号、引号
+// prettier-ignore
+var REGEXP = getRegExp('{|}|"', 'g');
+
+/**
+ * 获取对象的所有键名
+ * @param {Object} obj - 需要获取键名的对象
+ * @returns {Array} 包含所有键名的数组
+ */
+function keys(obj) {
+  // 将对象转换为JSON字符串，然后替换掉所有的非键名字符（大括号和引号）
+  // 接着按逗号分割字符串，最后对每个键名项进行处理，只保留键名部分
+  return JSON.stringify(obj)
+    .replace(REGEXP, "")
+    .split(",")
+    .map(function (item) {
+      return item.split(":")[0];
+    });
+}
+
+module.exports.keys = keys;
