@@ -4,15 +4,15 @@
   box-sizing: border-box;
 }
 
-.my-radius {
+.my-list-cell__radius {
   overflow: hidden;
 }
 
-.my-cell-hover:active {
+.my-list-cell__hover:active {
   background-color: rgba(0, 0, 0, 0.1) !important;
 }
 
-.my-cell__line {
+.my-list-cell__line {
   position: absolute;
   border-bottom: 1px solid #eaeef1;
   -webkit-transform: scaleY(0.5) translateZ(0);
@@ -24,7 +24,7 @@
   pointer-events: none;
 }
 
-.my-cell__arrow {
+.my-list-cell__arrow {
   height: 10px;
   width: 10px;
   border-width: 2px 2px 0 0;

@@ -1,0 +1,67 @@
+/*
+ * @Author: liusuxian 382185882@qq.com
+ * @Date: 2024-10-10 20:35:55
+ * @LastEditors: liusuxian 382185882@qq.com
+ * @LastEditTime: 2024-10-10 22:26:15
+ * @Description:
+ *
+ * Copyright (c) 2024 by liusuxian email: 382185882@qq.com, All Rights Reserved.
+ */
+var addUnit = require("../my-wxs/add-unit.wxs");
+
+function isValidRadius(radius) {
+  if (typeof radius === "number") {
+    return radius > 0;
+  }
+
+  if (typeof radius === "string") {
+    var numericValue = parseFloat(radius);
+    return !isNaN(numericValue) && numericValue > 0;
+  }
+
+  return false;
+}
+
+function getSize(data) {
+  var unit = data.unit || "rpx"; // 默认单位
+  return addUnit(data.size || data.g_size || 28, unit);
+}
+
+function getColor(data) {
+  return data.color || data.g_color || "#333";
+}
+
+function getPadding(data) {
+  return data.padding || data.g_padding || "26rpx 30rpx";
+}
+
+function getLineColor(data) {
+  return data.lineColor || data.g_lineColor || "#eaeef1";
+}
+
+function getLineLeft(data) {
+  var lineLeft = data.lineLeft;
+  if (lineLeft === -1) {
+    lineLeft = data.g_lineLeft;
+  }
+
+  var unit = data.unit || "rpx"; // 默认单位
+  if (lineLeft === undefined || lineLeft === null) {
+    return addUnit(30, unit);
+  }
+  return addUnit(lineLeft, unit);
+}
+
+function getArrowColor(data) {
+  return data.arrowColor || data.g_arrowColor || "#c0c0c0";
+}
+
+module.exports = {
+  isValidRadius: isValidRadius,
+  getSize: getSize,
+  getColor: getColor,
+  getPadding: getPadding,
+  getLineColor: getLineColor,
+  getLineLeft: getLineLeft,
+  getArrowColor: getArrowColor,
+};

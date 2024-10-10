@@ -2,7 +2,7 @@
  * @Author: liusuxian 382185882@qq.com
  * @Date: 2024-09-30 16:44:25
  * @LastEditors: liusuxian 382185882@qq.com
- * @LastEditTime: 2024-10-08 21:26:06
+ * @LastEditTime: 2024-10-10 22:22:23
  * @Description:
  *
  * Copyright (c) 2024 by liusuxian email: 382185882@qq.com, All Rights Reserved.
@@ -38,16 +38,16 @@ Component({
       type: String,
       value: "",
     },
-    // 线条左偏移距离，单位rpx，需传具体值
+    // 线条左偏移距离，需传具体值
     lineLeft: {
-      type: String,
-      optionalTypes: [Number],
+      type: Number,
+      optionalTypes: [String],
       value: -1,
     },
-    // 线条右偏移距离，单位rpx，需传具体值
+    // 线条右偏移距离，需传具体值
     lineRight: {
-      type: String,
-      optionalTypes: [Number],
+      type: Number,
+      optionalTypes: [String],
       value: 0,
     },
     // 内边距
@@ -55,16 +55,16 @@ Component({
       type: String,
       value: "",
     },
-    // margin-top值，单位rpx
+    // margin-top值
     marginTop: {
-      type: String,
-      optionalTypes: [Number],
+      type: Number,
+      optionalTypes: [String],
       value: 0,
     },
-    // margin-bottom值，单位rpx
+    // margin-bottom值
     marginBottom: {
-      type: String,
-      optionalTypes: [Number],
+      type: Number,
+      optionalTypes: [String],
       value: 0,
     },
     // 背景颜色
@@ -75,6 +75,7 @@ Component({
     // 字体大小
     size: {
       type: Number,
+      optionalTypes: [String],
       value: 0,
     },
     // 字体颜色
@@ -82,17 +83,22 @@ Component({
       type: String,
       value: "",
     },
-    // 圆角值，单位rpx
+    // 圆角值
     radius: {
-      type: String,
-      optionalTypes: [Number],
+      type: Number,
+      optionalTypes: [String],
       value: 0,
     },
-    // 箭头右偏移距离，单位rpx，需传具体值
+    // 箭头右偏移距离，需传具体值
     arrowRight: {
-      type: String,
-      optionalTypes: [Number],
+      type: Number,
+      optionalTypes: [String],
       value: 30,
+    },
+    // 单位
+    unit: {
+      type: String,
+      value: "rpx",
     },
     // 索引
     index: {

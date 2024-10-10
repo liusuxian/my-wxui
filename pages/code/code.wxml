@@ -1,3 +1,14 @@
 <view>
-  <my-navigation-bar title="我的组件"></my-navigation-bar>
+  <view class="content">
+    <my-navigation-bar title="我的组件"></my-navigation-bar>
+    <my-upload></my-upload>
+    <my-input></my-input>
+    <my-textarea></my-textarea>
+    <view>
+      <my-list-cell arrow arrowColor="#000" lineColor="#000" lineRight="30" marginTop="40" marginBottom="40"
+        backgroundColor="red">
+        <view class="list-cell-title">自定义列表项</view>
+      </my-list-cell>
+    </view>
+  </view>
 </view>

@@ -1,5 +1,12 @@
 {
   "usingComponents": {
-    "my-navigation-bar": "../../components/my-navigation-bar/my-navigation-bar"
+    "my-navigation-bar": "../../components/my-navigation-bar/my-navigation-bar",
+    "my-upload": "../../components/my-upload/my-upload",
+    "my-input": "../../components/my-input/my-input",
+    "my-textarea": "../../components/my-textarea/my-textarea",
+    "my-button": "../../components/my-button/my-button",
+    "my-collapse": "../../components/my-collapse/my-collapse",
+    "my-list-cell": "../../components/my-list-cell/my-list-cell",
+    "my-goods-action": "../../components/my-goods-action/my-goods-action"
   }
 }
