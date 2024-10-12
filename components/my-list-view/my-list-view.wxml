@@ -1,0 +1,19 @@
+<wxs src="../my-wxs/radius.wxs" module="isValidRadius"></wxs>
+<wxs src="../my-wxs/utils.wxs" module="utils"></wxs>
+
+<view class="custom-class {{utils.bem('list-view', {radius: isValidRadius(radius)})}}"
+  style="background-color: {{backgroundColor}}; margin-top: {{utils.addUnit(marginTop, unit)}}; margin-bottom: {{utils.addUnit(marginBottom, unit)}}; border-radius: {{utils.addUnit(radius, unit)}};">
+  <view wx:if="{{title}}" class="my-list-title"
+    style="color: {{color}}; font-size: {{utils.addUnit(size, unit)}}; line-height: {{utils.addUnit(size, unit)}};">
+    {{title}}
+  </view>
+  <view class="my-list-content">
+    <view wx:if="{{unlined !== 'top' && unlined !== 'all'}}" class="my-list-content__top-line"
+      style="border-top-color: {{lineColor}};">
+    </view>
+    <slot></slot>
+    <view wx:if="{{unlined !== 'bottom' && unlined !== 'all'}}" class="my-list-content__bottom-line"
+      style="border-bottom-color: {{lineColor}};">
+    </view>
+  </view>
+</view>

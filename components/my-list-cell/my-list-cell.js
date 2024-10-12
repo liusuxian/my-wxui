@@ -2,7 +2,7 @@
  * @Author: liusuxian 382185882@qq.com
  * @Date: 2024-09-30 16:44:25
  * @LastEditors: liusuxian 382185882@qq.com
- * @LastEditTime: 2024-10-11 00:01:12
+ * @LastEditTime: 2024-10-12 20:10:09
  * @Description:
  *
  * Copyright (c) 2024 by liusuxian email: 382185882@qq.com, All Rights Reserved.
@@ -28,15 +28,15 @@ Component({
       type: Boolean,
       value: true,
     },
-    // 隐藏线条
+    // 去掉线条，可设置：top（去掉上边线条），bottom（去掉下边线条），all（去掉所有线条）
     unlined: {
-      type: Boolean,
-      value: false,
+      type: String,
+      value: "",
     },
     // 线条颜色
     lineColor: {
       type: String,
-      value: "",
+      value: "#eaeef1",
     },
     // 线条左偏移距离，需传具体值
     lineLeft: {

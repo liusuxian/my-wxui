@@ -9,19 +9,6 @@
  */
 var addUnit = require("../my-wxs/add-unit.wxs");
 
-function isValidRadius(radius) {
-  if (typeof radius === "number") {
-    return radius > 0;
-  }
-
-  if (typeof radius === "string") {
-    var numericValue = parseFloat(radius);
-    return !isNaN(numericValue) && numericValue > 0;
-  }
-
-  return false;
-}
-
 function getSize(data) {
   var unit = data.unit || "rpx"; // 默认单位
   return addUnit(data.size || data.g_size || 28, unit);
@@ -57,7 +44,6 @@ function getArrowColor(data) {
 }
 
 module.exports = {
-  isValidRadius: isValidRadius,
   getSize: getSize,
   getColor: getColor,
   getPadding: getPadding,

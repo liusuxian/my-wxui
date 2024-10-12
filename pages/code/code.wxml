@@ -5,10 +5,20 @@
     <my-input></my-input>
     <my-textarea></my-textarea>
     <view style="padding: 20rpx;">
-      <my-list-cell custom-class="custom-list-cell" arrow arrowColor="#000" unlined lineRight="30" marginTop="40"
-        marginBottom="40" backgroundColor="red" radius="20">
-        <view class="list-cell-title">自定义列表项</view>
-      </my-list-cell>
+      <my-list-view title="列表标题" color="#000">
+        <my-list-cell custom-class="custom-list-cell" arrow arrowColor="#000" hover="{{false}}" unlined="all"
+          lineRight="30" backgroundColor="#f1f1f1" radius="20">
+          <view class="list-cell-title">自定义列表项</view>
+        </my-list-cell>
+        <my-list-cell custom-class="custom-list-cell" arrow arrowColor="#000" unlined="all" lineRight="30"
+          marginTop="40" backgroundColor="#f1f1f1" radius="20">
+          <view class="list-cell-title">自定义列表项</view>
+        </my-list-cell>
+        <my-list-cell custom-class="custom-list-cell" arrow arrowColor="#000" hover="{{false}}" unlined="all"
+          lineRight="30" marginTop="40" backgroundColor="#f1f1f1" radius="20">
+          <view class="list-cell-title">自定义列表项</view>
+        </my-list-cell>
+      </my-list-view>
     </view>
   </view>
 </view>

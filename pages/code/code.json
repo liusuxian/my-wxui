@@ -7,6 +7,7 @@
     "my-button": "../../components/my-button/my-button",
     "my-collapse": "../../components/my-collapse/my-collapse",
     "my-list-cell": "../../components/my-list-cell/my-list-cell",
+    "my-list-view": "../../components/my-list-view/my-list-view",
     "my-goods-action": "../../components/my-goods-action/my-goods-action"
   }
 }

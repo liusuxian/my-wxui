@@ -27,13 +27,13 @@
 
 .my-list-cell__top-line {
   top: 0;
-  border-top: 1px solid #eaeef1;
+  border-top: 1px solid;
   transform-origin: 0 0;
 }
 
 .my-list-cell__bottom-line {
   bottom: 0;
-  border-bottom: 1px solid #eaeef1;
+  border-bottom: 1px solid;
   transform-origin: 0 100%;
 }
 

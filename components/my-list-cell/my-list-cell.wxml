@@ -1,14 +1,15 @@
 <wxs src="./my-list-cell.wxs" module="computed"></wxs>
+<wxs src="../my-wxs/radius.wxs" module="isValidRadius"></wxs>
 <wxs src="../my-wxs/utils.wxs" module="utils"></wxs>
 
-<view class="custom-class {{utils.bem('list-cell', {radius: computed.isValidRadius(radius), hover: hover})}}"
+<view class="custom-class {{utils.bem('list-cell', {radius: isValidRadius(radius), hover: hover})}}"
   style="background-color: {{backgroundColor}}; font-size: {{computed.getSize({size, g_size, unit})}}; color: {{computed.getColor(color, g_color)}}; padding: {{computed.getPadding({padding, g_padding})}}; border-radius: {{utils.addUnit(radius, unit)}}; margin-top: {{utils.addUnit(marginTop, unit)}}; margin-bottom: {{utils.addUnit(marginBottom, unit)}};"
   bindtap="handleClick">
   <slot></slot>
-  <view wx:if="{{!unlined}}" class="my-list-cell__top-line"
+  <view wx:if="{{unlined !== 'top' && unlined !== 'all'}}" class="my-list-cell__top-line"
     style="border-top-color: {{computed.getLineColor({lineColor, g_lineColor})}}; left: {{computed.getLineLeft({lineLeft, g_lineLeft, unit})}}; right: {{utils.addUnit(lineRight, unit)}};">
   </view>
-  <view wx:if="{{!unlined}}" class="my-list-cell__bottom-line"
+  <view wx:if="{{unlined !== 'bottom' && unlined !== 'all'}}" class="my-list-cell__bottom-line"
     style="border-bottom-color: {{computed.getLineColor({lineColor, g_lineColor})}}; left: {{computed.getLineLeft({lineLeft, g_lineLeft, unit})}}; right: {{utils.addUnit(lineRight, unit)}};">
   </view>
   <view wx:if="{{arrow}}" class="my-list-cell__arrow"
