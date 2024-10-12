@@ -1,5 +1,7 @@
 <wxs src="./my-col.wxs" module="computed"></wxs>
+<wxs src="../my-wxs/utils.wxs" module="utils"></wxs>
 
-<view class="custom-class {{classList}}" style="{{computed.rootStyle({gutter, unit})}}">
+<view class="custom-class {{utils.bem('col', [span, offset ? 'offset-' + offset : ''])}}"
+  style="{{computed.rootStyle({gutter, unit})}}">
   <slot></slot>
 </view>
