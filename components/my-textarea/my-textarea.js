@@ -2,7 +2,7 @@
  * @Author: liusuxian 382185882@qq.com
  * @Date: 2024-09-30 16:44:25
  * @LastEditors: liusuxian 382185882@qq.com
- * @LastEditTime: 2024-10-09 19:29:18
+ * @LastEditTime: 2024-10-13 13:14:40
  * @Description:
  *
  * Copyright (c) 2024 by liusuxian email: 382185882@qq.com, All Rights Reserved.
@@ -242,7 +242,7 @@ Component({
     // 输入框背景颜色
     backgroundColor: {
       type: String,
-      value: "#FFF",
+      value: "#fff",
     },
     // 输入框margin-top值
     marginTop: {

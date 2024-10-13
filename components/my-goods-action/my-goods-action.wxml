@@ -3,3 +3,5 @@
 <view class="custom-class {{utils.bem('goods-action', {safe: safeAreaInsetBottom})}}">
   <slot></slot>
 </view>
+<!-- 占位元素 -->
+<view wx:if="{{placeholder}}" style="height: {{utils.addUnit(height, 'px')}};"></view>

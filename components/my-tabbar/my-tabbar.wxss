@@ -1,0 +1,130 @@
+.my-tabbar {
+  width: 100%;
+  height: 100rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+}
+
+.my-tabbar::before {
+  position: absolute;
+  left: 0;
+  top: 0;
+  content: "";
+  width: 100%;
+  border-top: 1px solid #b2b2b2;
+  transform: scaleY(0.5) translateZ(0);
+  transform-origin: 0 0;
+  display: block;
+  z-index: 3;
+}
+
+.my-tabbar__fixed {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+}
+
+.my-tabbar__safe {
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+.my-tabbar.my-tabbar__unlined::before {
+  border-top: none;
+}
+
+.my-tabbar__backdrop-filter {
+  /* Safari for macOS & iOS */
+  -webkit-backdrop-filter: blur(15px);
+  /* Google Chrome */
+  backdrop-filter: blur(15px);
+}
+
+.my-tabbar-item {
+  height: 100%;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  position: relative;
+  padding: 10rpx 0;
+  box-sizing: border-box;
+}
+
+.my-tabbar-item__hump {
+  height: 100rpx;
+}
+
+.my-tabbar-icon-box {
+  width: 100rpx;
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.my-tabbar-icon-box__hump {
+  width: 100rpx;
+  position: absolute;
+  left: 50%;
+  top: -40rpx;
+  -webkit-transform: translateX(-50%) rotate(0deg);
+  transform: translateX(-50%) rotate(0deg);
+  -webkit-transition: all 0.2s linear;
+  transition: all 0.2s linear;
+  border-radius: 50%;
+  z-index: 5;
+  display: flex;
+  justify-content: center;
+}
+
+.my-tabbar-icon {
+  display: block;
+}
+
+.my-tabbar-badge-dot {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 16rpx;
+  height: 16rpx;
+  border-radius: 50%;
+}
+
+.my-tabbar-badge {
+  position: absolute;
+  right: 0;
+  top: -5rpx;
+  min-width: 20rpx;
+  height: 32rpx;
+  font-size: 24rpx;
+  padding: 0 6rpx;
+  border-radius: 40rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.my-tabbar-text {
+  font-weight: bold;
+}
+
+.my-tabbar-text__hump {
+  position: absolute;
+  left: 50%;
+  bottom: 26rpx;
+  transform: translateX(-50%);
+}
+
+.my-tabbar-center-hump {
+  width: 120rpx;
+  height: 120rpx;
+  position: absolute;
+  left: 50%;
+  top: -60rpx;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  z-index: 4;
+  border: 1px solid #b2b2b2;
+  clip-path: polygon(0% 0%, 100% 0%, 100% 50%, 0% 50%);
+}

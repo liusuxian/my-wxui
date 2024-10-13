@@ -1,0 +1,31 @@
+<wxs src="../my-wxs/utils.wxs" module="utils"></wxs>
+
+<view
+  class="custom-class {{utils.bem('tabbar', [fixed ? 'fixed' : '', safeAreaInsetBottom ? 'safe' : '', unlined ? 'unlined' : '', backdropFilter ? 'backdrop-filter' : ''])}}"
+  style="background-color: {{backgroundColor}}; z-index: {{fixed ? zIndex : 'auto'}};">
+  <block wx:for="{{list}}" wx:key="index">
+    <view class="{{utils.bem('tabbar-item', {hump: item.hump})}}"
+      style="background-color: {{item.hump && !backdropFilter ? backgroundColor : 'none'}};" data-index="{{index}}"
+      data-page-path="{{item.pagePath}}" bindtap="tabbarSwitch">
+      <view class="{{utils.bem('tabbar-icon-box', {hump: item.hump})}}">
+        <image class="{{item.hump ? '' : 'my-tabbar-icon'}}"
+          style="width: {{utils.addUnit(iconWidth, unit)}}; height: {{utils.addUnit(iconHeight, unit)}};"
+          src="{{current === index ? item.selectedIconPath : item.iconPath}}">
+        </image>
+        <view wx:if="{{item.num}}" class="{{item.isDot ? 'my-tabbar-badge-dot' : 'my-tabbar-badge'}}"
+          style="color: {{badgeColor}}; background-color: {{(badgeBgColor || g_badgeBgColor)}};">
+          {{item.isDot ? '' : item.num}}
+        </view>
+      </view>
+      <view wx:if="{{item.text}}" class="{{utils.bem('tabbar-text', {hump: item.hump})}}"
+        style="color: {{current === index ? (selectedColor || g_selectedColor) : color}}; font-size: {{utils.addUnit(fontSize, unit)}};">
+        {{item.text}}
+      </view>
+    </view>
+  </block>
+  <view wx:if="{{hump && !unlined && !backdropFilter}}" class="my-tabbar-center-hump"
+    style="background-color: {{backgroundColor}};">
+  </view>
+</view>
+<!-- 占位元素 -->
+<view wx:if="{{fixed && placeholder}}" style="height: {{utils.addUnit(height, 'px')}};"></view>

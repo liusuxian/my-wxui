@@ -2,7 +2,7 @@
  * @Author: liusuxian 382185882@qq.com
  * @Date: 2024-09-30 13:42:56
  * @LastEditors: liusuxian 382185882@qq.com
- * @LastEditTime: 2024-10-08 23:45:57
+ * @LastEditTime: 2024-10-13 13:14:33
  * @Description:
  *
  * Copyright (c) 2024 by liusuxian email: 382185882@qq.com, All Rights Reserved.
@@ -254,7 +254,7 @@ Component({
     g_labelColor: (wx.$my && wx.$my.myInput.labelColor) || "#333",
     g_size: (wx.$my && wx.$my.myInput.size) || 32,
     g_color: (wx.$my && wx.$my.myInput.color) || "#333",
-    g_backgroundColor: (wx.$my && wx.$my.myInput.backgroundColor) || "#FFF",
+    g_backgroundColor: (wx.$my && wx.$my.myInput.backgroundColor) || "#fff",
     g_padding: (wx.$my && wx.$my.myInput.padding) || "26rpx 30rpx",
   },
   lifetimes: {
