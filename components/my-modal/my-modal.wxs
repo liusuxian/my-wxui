@@ -1,0 +1,35 @@
+/*
+ * @Author: liusuxian 382185882@qq.com
+ * @Date: 2024-10-14 18:06:03
+ * @LastEditors: liusuxian 382185882@qq.com
+ * @LastEditTime: 2024-10-14 18:39:27
+ * @Description:
+ *
+ * Copyright (c) 2024 by liusuxian email: 382185882@qq.com, All Rights Reserved.
+ */
+function getColor(data) {
+  var colorObj = data.colors || {};
+  colorObj["white"] = data.isBg ? "#fff" : "#333";
+  colorObj["gray"] = data.isBg ? "#ededed" : "#999";
+  var color = colorObj[data.type || "primary"];
+  if (data.isBg && data.plain) {
+    color = "transparent";
+  }
+  return color;
+}
+
+function getTextColor(data) {
+  var colorObj = data.colors || {};
+  colorObj["white"] = "#333";
+  colorObj["gray"] = "#999";
+  var color = colorObj[data.type || "primary"];
+  if (!data.plain && data.type !== "white" && data.type !== "gray") {
+    color = "#fff";
+  }
+  return color;
+}
+
+module.exports = {
+  getColor: getColor,
+  getTextColor: getTextColor,
+};

@@ -20,5 +20,7 @@
         </my-list-cell>
       </my-list-view>
     </view>
+    <my-button bindclick="onShowModal">打开弹窗</my-button>
   </view>
+  <my-modal show="{{showModal}}" title="提示" content="上传成功！" bindcancel="onCloseModal"   bindclick="onCloseModal"></my-modal>
 </view>

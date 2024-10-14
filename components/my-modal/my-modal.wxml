@@ -1,0 +1,33 @@
+<wxs src="./my-modal.wxs" module="computed"></wxs>
+<wxs src="../my-wxs/utils.wxs" module="utils"></wxs>
+
+<view class="custom-class {{utils.bem('modal', {container: true, show: show, hidden: isHide})}}"
+  style="background: {{isMask ? maskColor : 'transparent'}}; z-index: {{zIndex}};" bindtap="handleClickCancel"
+  catch:touchmove="stop">
+  <view
+    class="my-modal-box {{(fadeIn || show) ? 'my-modal__normal' : 'my-modal__scale'}} {{show ? 'my-modal__show' : ''}}"
+    style="width: {{utils.addUnit(width, unit)}}; padding: {{padding}}; border-radius: {{utils.addUnit(radius, unit)}}; background-color: {{backgroundColor}}; z-index: {{zIndex + 1}};"
+    catch:tap="stop">
+    <view wx:if="{{!custom}}">
+      <view wx:if="{{title}}" class="my-modal-title">{{title}}</view>
+      <view class="my-modal-content {{title ? '' : 'my-mtop'}}"
+        style="color: {{color}}; font-size: {{utils.addUnit(size, unit)}};">
+        {{content}}
+      </view>
+      <view class="my-modal-btn-box {{button.length !== 2 ? 'my-flex-column' : ''}}">
+        <view wx:for="{{button}}" wx:key="index"
+          class="my-modal-btn {{button.length !== 2 ? 'my-btn-width' : ''}} {{button.length > 2 ? 'my-mbtm' : ''}} {{shape === 'circle' ? 'my-circle-btn' : ''}}"
+          style="background: {{computed.getColor({colors: colors, type: item.type, isBg: true, plain: item.plain})}}; color: {{computed.getTextColor({type: item.type, plain: item.plain, colors: colors})}};"
+          data-index="{{index}}" bindtap="handleClick">
+          {{item.text || '确定'}}
+          <view wx:if="{{item.plain}}" class="my-modal__border {{shape === 'circle' ? 'my-circle-border' : ''}}"
+            style="border-color: {{computed.getColor({colors: colors, type: item.type})}};">
+          </view>
+        </view>
+      </view>
+    </view>
+    <view wx:else>
+      <slot></slot>
+    </view>
+  </view>
+</view>

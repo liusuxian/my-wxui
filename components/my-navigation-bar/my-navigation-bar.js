@@ -2,7 +2,7 @@
  * @Author: liusuxian 382185882@qq.com
  * @Date: 2024-02-21 17:33:53
  * @LastEditors: liusuxian 382185882@qq.com
- * @LastEditTime: 2024-10-09 19:51:50
+ * @LastEditTime: 2024-10-14 19:06:38
  * @Description:
  *
  * Copyright (c) 2024 by liusuxian email: 382185882@qq.com, All Rights Reserved.
@@ -184,39 +184,36 @@ Component({
         dropDownOpacity: this.data.backdropFilter && 0,
       });
       let obj = wx.getMenuButtonBoundingClientRect();
-      wx.getSystemInfo({
-        success: (res) => {
-          let height = this.data.height;
-          if (this.data.safeAreaInsetTop) {
-            height = obj.top
-              ? obj.top + obj.height + 8
-              : res.statusBarHeight + 44;
-          }
-          this.setData(
-            {
-              statusBarHeight: res.statusBarHeight,
-              width: res.windowWidth,
-              left: obj.left || res.windowWidth,
-              height: height,
-              scrollH: res.windowWidth * this.data.scrollRatio,
-              top: obj.top
-                ? obj.top + (obj.height - 32) / 2
-                : res.statusBarHeight + 6,
-            },
-            () => {
-              this.triggerEvent("init", {
-                width: this.data.width,
-                height: this.data.height,
-                left: obj.left,
-                top: this.data.top,
-                statusBarHeight: this.data.statusBarHeight,
-                opacity: this.data.opacity,
-                windowHeight: res.windowHeight,
-              });
-            }
-          );
+      let windowInfo = wx.getWindowInfo();
+      let height = this.data.height;
+      if (this.data.safeAreaInsetTop) {
+        height = obj.top
+          ? obj.top + obj.height + 8
+          : windowInfo.statusBarHeight + 44;
+      }
+      this.setData(
+        {
+          statusBarHeight: windowInfo.statusBarHeight,
+          width: windowInfo.windowWidth,
+          left: obj.left || windowInfo.windowWidth,
+          height: height,
+          scrollH: windowInfo.windowWidth * this.data.scrollRatio,
+          top: obj.top
+            ? obj.top + (obj.height - 32) / 2
+            : windowInfo.statusBarHeight + 6,
         },
-      });
+        () => {
+          this.triggerEvent("init", {
+            width: this.data.width,
+            height: this.data.height,
+            left: obj.left,
+            top: this.data.top,
+            statusBarHeight: this.data.statusBarHeight,
+            opacity: this.data.opacity,
+            windowHeight: windowInfo.windowHeight,
+          });
+        }
+      );
     },
   },
   methods: {

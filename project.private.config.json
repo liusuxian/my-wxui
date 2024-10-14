@@ -3,5 +3,6 @@
   "projectname": "my-wxui",
   "setting": {
     "compileHotReLoad": true
-  }
+  },
+  "libVersion": "3.6.0"
 }
