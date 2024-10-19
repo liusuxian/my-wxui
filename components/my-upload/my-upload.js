@@ -2,7 +2,7 @@
  * @Author: liusuxian 382185882@qq.com
  * @Date: 2024-08-15 14:40:12
  * @LastEditors: liusuxian 382185882@qq.com
- * @LastEditTime: 2024-10-10 01:58:42
+ * @LastEditTime: 2024-10-20 01:58:21
  * @Description:
  *
  * Copyright (c) 2024 by liusuxian email: 382185882@qq.com, All Rights Reserved.
@@ -498,7 +498,6 @@ Component({
       if (!this.data.imageList.length) return;
       wx.previewImage({
         current: this.data.imageList[index],
-        loop: true,
         urls: this.data.imageList,
       });
     },
