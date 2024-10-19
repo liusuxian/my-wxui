@@ -61,7 +61,7 @@
 }
 
 .my-selected-scroll {
-  width: calc(100% + 2px);
+  width: calc(100% + 20rpx);
 }
 
 .my-selected-scroll ::-webkit-scrollbar {
@@ -95,7 +95,7 @@
   transform: scaleY(0.5) translateZ(0);
   transform-origin: 0 100%;
   left: 30rpx;
-  right: 30rpx;
+  right: 50rpx;
   bottom: 0;
   pointer-events: none;
 }
