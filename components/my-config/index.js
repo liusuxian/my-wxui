@@ -2,7 +2,7 @@
  * @Author: liusuxian 382185882@qq.com
  * @Date: 2024-09-26 12:11:12
  * @LastEditors: liusuxian 382185882@qq.com
- * @LastEditTime: 2024-10-14 19:07:41
+ * @LastEditTime: 2024-10-14 19:08:14
  * @Description:
  * 基础组件 props 属性全局配置文件。优先级：全局配置文件props < 单独设置组件props
  * 温馨提示：未设置则使用组件内默认值，避免出错，请勿删减以下配置
