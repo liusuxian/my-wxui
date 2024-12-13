@@ -2,7 +2,7 @@
  * @Author: liusuxian 382185882@qq.com
  * @Date: 2024-08-15 14:40:12
  * @LastEditors: liusuxian 382185882@qq.com
- * @LastEditTime: 2024-10-20 01:58:10
+ * @LastEditTime: 2024-12-14 00:58:53
  * @Description:
  *
  * Copyright (c) 2024 by liusuxian email: 382185882@qq.com, All Rights Reserved.
@@ -126,10 +126,10 @@ Component({
       type: Boolean,
       value: true,
     },
-    // 压缩图片质量，默认 50
+    // 压缩图片质量，默认 80
     compressQuality: {
       type: Number,
-      value: 50,
+      value: 80,
     },
     // 文件对应的 key，开发者在服务器端通过这个 key 可以获取到文件二进制内容，默认为 file
     fileKeyName: {
