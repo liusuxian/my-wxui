@@ -8,12 +8,11 @@
       style="background-color: {{item.hump && !backdropFilter ? backgroundColor : 'none'}};" data-index="{{index}}"
       data-page-path="{{item.pagePath}}" bindtap="tabbarSwitch">
       <view class="{{utils.bem('tabbar-icon-box', {hump: item.hump})}}">
-        <image wx:if="{{item.iconPath !== '' && item.selectedIconPath !== ''}}"
-          class="{{item.hump ? '' : 'my-tabbar-icon'}}"
+        <image wx:if="{{item.iconPath && item.selectedIconPath}}" class="{{item.hump ? '' : 'my-tabbar-icon'}}"
           style="width: {{utils.addUnit(iconWidth, unit)}}; height: {{utils.addUnit(iconHeight, unit)}};"
           src="{{current === index ? item.selectedIconPath : item.iconPath}}">
         </image>
-        <view wx:if="{{item.iconClass !== '' && (item.iconPath === '' || item.selectedIconPath === '')}}"
+        <view wx:if="{{item.iconClass && (!item.iconPath || !item.selectedIconPath)}}"
           class="{{item.hump ? '' : 'my-tabbar-icon__flex'}} {{item.iconClass}}"
           style="width: {{utils.addUnit(iconWidth, unit)}}; height: {{utils.addUnit(iconHeight, unit)}}; color: {{current === index ? (selectedColor || g_selectedColor) : color}}; font-size: {{utils.addUnit(iconFontSize, unit)}};">
         </view>
