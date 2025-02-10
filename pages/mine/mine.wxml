@@ -1,3 +1,5 @@
 <view>
   <my-navigation-bar title="我的"></my-navigation-bar>
+  <!-- 底部导航栏 -->
+  <my-tabbar selectedColor="#B48325" iconWidth="40" iconHeight="40"></my-tabbar>
 </view>

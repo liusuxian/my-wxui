@@ -22,5 +22,8 @@
     </view>
     <my-button bindclick="onShowModal">打开弹窗</my-button>
   </view>
-  <my-modal show="{{showModal}}" title="提示" content="上传成功！" bindcancel="onCloseModal"   bindclick="onCloseModal"></my-modal>
+  <!-- 底部导航栏 -->
+  <my-tabbar selectedColor="#B48325" iconWidth="40" iconHeight="40"></my-tabbar>
+  <my-modal show="{{showModal}}" title="提示" content="上传成功！" bindcancel="onCloseModal" bindclick="onCloseModal">
+  </my-modal>
 </view>

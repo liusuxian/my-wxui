@@ -1,5 +1,6 @@
 {
   "usingComponents": {
-    "my-navigation-bar": "../../components/my-navigation-bar/my-navigation-bar"
+    "my-navigation-bar": "../../components/my-navigation-bar/my-navigation-bar",
+    "my-tabbar": "../../components/my-tabbar/my-tabbar"
   }
 }

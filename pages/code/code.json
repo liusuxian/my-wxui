@@ -9,6 +9,7 @@
     "my-list-cell": "../../components/my-list-cell/my-list-cell",
     "my-list-view": "../../components/my-list-view/my-list-view",
     "my-goods-action": "../../components/my-goods-action/my-goods-action",
-    "my-modal": "../../components/my-modal/my-modal"
+    "my-modal": "../../components/my-modal/my-modal",
+    "my-tabbar": "../../components/my-tabbar/my-tabbar"
   }
 }

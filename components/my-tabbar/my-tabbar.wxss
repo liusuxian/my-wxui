@@ -82,6 +82,12 @@
   display: block;
 }
 
+.my-tabbar-icon__flex {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .my-tabbar-badge-dot {
   position: absolute;
   right: 0;
