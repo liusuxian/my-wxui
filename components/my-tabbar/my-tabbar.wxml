@@ -9,12 +9,12 @@
       data-page-path="{{item.pagePath}}" bindtap="tabbarSwitch">
       <view class="{{utils.bem('tabbar-icon-box', {hump: item.hump})}}">
         <image wx:if="{{item.iconPath && item.selectedIconPath}}" class="{{item.hump ? '' : 'my-tabbar-icon'}}"
-          style="width: {{utils.addUnit(iconWidth, unit)}}; height: {{utils.addUnit(iconHeight, unit)}};"
+          style="width: {{utils.addUnit(iconSize, unit)}}; height: {{utils.addUnit(iconSize, unit)}};"
           src="{{current === index ? item.selectedIconPath : item.iconPath}}">
         </image>
-        <view wx:if="{{item.iconClass && (!item.iconPath || !item.selectedIconPath)}}"
-          class="{{item.hump ? '' : 'my-tabbar-icon__flex'}} {{item.iconClass}}"
-          style="width: {{utils.addUnit(iconWidth, unit)}}; height: {{utils.addUnit(iconHeight, unit)}}; color: {{current === index ? (selectedColor || g_selectedColor) : color}}; font-size: {{utils.addUnit(iconFontSize, unit)}};">
+        <view wx:if="{{(item.iconClass && item.selectedIconClass) && (!item.iconPath || !item.selectedIconPath)}}"
+          class="{{item.hump ? '' : 'my-tabbar-icon'}} {{current === index ? item.selectedIconClass : item.iconClass}}"
+          style="width: {{utils.addUnit(iconSize, unit)}}; height: {{utils.addUnit(iconSize, unit)}}; color: {{current === index ? (selectedColor || g_selectedColor) : color}}; font-size: {{utils.addUnit(iconSize, unit)}};">
         </view>
         <view wx:if="{{item.num}}" class="{{item.isDot ? 'my-tabbar-badge-dot' : 'my-tabbar-badge'}}"
           style="color: {{badgeColor}}; background-color: {{(badgeBgColor || g_badgeBgColor)}};">

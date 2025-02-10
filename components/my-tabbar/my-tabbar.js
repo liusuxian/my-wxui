@@ -2,7 +2,7 @@
  * @Author: liusuxian 382185882@qq.com
  * @Date: 2024-10-13 12:42:32
  * @LastEditors: liusuxian 382185882@qq.com
- * @LastEditTime: 2025-02-10 16:00:21
+ * @LastEditTime: 2025-02-10 22:30:13
  * @Description:
  *
  * Copyright (c) 2024 by liusuxian email: 382185882@qq.com, All Rights Reserved.
@@ -34,23 +34,11 @@ Component({
       type: String,
       value: "#fff",
     },
-    // 图标宽度
-    iconWidth: {
+    // 图标大小
+    iconSize: {
       type: Number,
       optionalTypes: [String],
       value: 80,
-    },
-    // 图标高度
-    iconHeight: {
-      type: Number,
-      optionalTypes: [String],
-      value: 80,
-    },
-    // 图标字体大小
-    iconFontSize: {
-      type: Number,
-      optionalTypes: [String],
-      value: 26,
     },
     // 是否需要中间凸起按钮
     hump: {
@@ -121,6 +109,7 @@ Component({
     //   "pagePath": "/pages/index/index", // 页面路径
     //   "text": "标题", // 标题
     //   "iconClass": "class-name-1 class-name-2", // 字体图标类名
+    //   "selectedIconClass": "class-name-1 class-name-2", // 选中字体图标类名
     //   "iconPath": "iconPath.png", // 图标地址
     //   "selectedIconPath": "selectedIconPath.png", // 选中图标地址
     //   "hump": true, // 是否为凸起图标
