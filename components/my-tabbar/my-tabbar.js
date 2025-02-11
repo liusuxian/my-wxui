@@ -2,7 +2,7 @@
  * @Author: liusuxian 382185882@qq.com
  * @Date: 2024-10-13 12:42:32
  * @LastEditors: liusuxian 382185882@qq.com
- * @LastEditTime: 2025-02-10 22:30:13
+ * @LastEditTime: 2025-02-12 00:08:34
  * @Description:
  *
  * Copyright (c) 2024 by liusuxian email: 382185882@qq.com, All Rights Reserved.
@@ -149,6 +149,9 @@ Component({
           .boundingClientRect((rect) => {
             if (rect && rect.height) {
               this.setData({ height: rect.height });
+              this.triggerEvent("init", {
+                height: rect.height,
+              });
             }
           })
           .exec();
