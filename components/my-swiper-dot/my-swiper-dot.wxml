@@ -1,0 +1,24 @@
+<wxs src="../my-wxs/utils.wxs" module="utils"></wxs>
+
+<view wx:if="{{type === 1 || type === 2}}" class="custom-class my-swiper__dot"
+  style="left: {{utils.addUnit(left, unit)}}; bottom: {{utils.addUnit(bottom, unit)}};">
+  <view
+    style="display: flex; overflow: hidden; border-radius: {{utils.addUnit(containerRadius, unit)}}; opacity: {{containerOpacity}};">
+    <view class="my-dot__item {{type === 2 ? 'my-text__center' : ''}}"
+      style="width: {{index === current ? utils.addUnit(width, unit) : utils.addUnit(height, unit)}}; height: {{utils.addUnit(height, unit)}}; border-radius: {{utils.addUnit(radius, unit)}}; background-color: {{index === current ? (activeBgColor || g_activeBgColor) : backgroundColor}}; margin: {{margin}}; color: {{current === index ? color : activeColor}}; font-size: {{utils.addUnit(size, unit)}};"
+      wx:for="{{count}}" wx:key="index">
+      {{type === 2 ? index+1 : ''}}
+    </view>
+  </view>
+</view>
+<view wx:else class="my-swiper__dot"
+  style="width: {{type === 4 ? utils.addUnit(width, unit) : '100%'}}; right: {{utils.addUnit(right, unit)}}; bottom: {{utils.addUnit(bottom, unit)}};">
+  <view wx:if="{{type === 3}}" class="my-dot__item"
+    style="width: {{utils.addUnit(width, unit)}}; height: {{utils.addUnit(height, unit)}}; padding: {{padding}}; color: {{color}}; background-color: {{backgroundColor}}; font-size: {{utils.addUnit(size, unit)}};">
+    <text class="my-nav__ellipsis">{{currentTitle}}</text>
+  </view>
+  <view wx:if="{{type === 4}}" class="my-dot__item my-text__center"
+    style="width: {{utils.addUnit(width, unit)}}; height: {{utils.addUnit(height, unit)}}; border-radius: {{utils.addUnit(radius, unit)}}; background-color: {{backgroundColor}}; color: {{color}}; font-size: {{utils.addUnit(size, unit)}};">
+    {{current+1}}/{{count}}
+  </view>
+</view>
