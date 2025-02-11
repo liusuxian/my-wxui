@@ -2,7 +2,7 @@
  * @Author: liusuxian 382185882@qq.com
  * @Date: 2025-02-11 15:31:20
  * @LastEditors: liusuxian 382185882@qq.com
- * @LastEditTime: 2025-02-11 17:03:10
+ * @LastEditTime: 2025-02-11 17:18:42
  * @Description:
  *
  * Copyright (c) 2025 by liusuxian email: 382185882@qq.com, All Rights Reserved.
@@ -53,6 +53,12 @@ Component({
     },
     // 指示点[type in (1,2)]或外层盒子[type in (3,4)]宽度
     width: {
+      type: Number,
+      optionalTypes: [String],
+      value: 16,
+    },
+    // 当前指示点[type in (1,2)]或外层盒子[type in (3,4)]宽度
+    activeWidth: {
       type: Number,
       optionalTypes: [String],
       value: 16,

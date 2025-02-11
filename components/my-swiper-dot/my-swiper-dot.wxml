@@ -3,9 +3,9 @@
 <view wx:if="{{type === 1 || type === 2}}" class="custom-class my-swiper__dot"
   style="left: {{utils.addUnit(left, unit)}}; bottom: {{utils.addUnit(bottom, unit)}};">
   <view
-    style="display: flex; overflow: hidden; border-radius: {{utils.addUnit(containerRadius, unit)}}; opacity: {{containerOpacity}};">
+    style="flex-shrink: 0; display: flex; overflow: hidden; border-radius: {{utils.addUnit(containerRadius, unit)}}; opacity: {{containerOpacity}};">
     <view class="my-dot__item {{type === 2 ? 'my-text__center' : ''}}"
-      style="width: {{index === current ? utils.addUnit(width, unit) : utils.addUnit(height, unit)}}; height: {{utils.addUnit(height, unit)}}; border-radius: {{utils.addUnit(radius, unit)}}; background-color: {{index === current ? (activeBgColor || g_activeBgColor) : backgroundColor}}; margin: {{margin}}; color: {{current === index ? color : activeColor}}; font-size: {{utils.addUnit(size, unit)}};"
+      style="width: {{index === current ? utils.addUnit(activeWidth, unit) : utils.addUnit(width, unit)}}; height: {{utils.addUnit(height, unit)}}; border-radius: {{utils.addUnit(radius, unit)}}; background-color: {{index === current ? (activeBgColor || g_activeBgColor) : backgroundColor}}; margin: {{margin}}; color: {{current === index ? color : activeColor}}; font-size: {{utils.addUnit(size, unit)}};"
       wx:for="{{count}}" wx:key="index">
       {{type === 2 ? index+1 : ''}}
     </view>
