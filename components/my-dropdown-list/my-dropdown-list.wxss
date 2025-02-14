@@ -60,10 +60,6 @@
   box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
 }
 
-.my-selected-scroll {
-  width: calc(100% + 20rpx);
-}
-
 .my-selected-cell {
   position: relative;
   width: 100%;
@@ -89,7 +85,7 @@
   transform: scaleY(0.5) translateZ(0);
   transform-origin: 0 100%;
   left: 30rpx;
-  right: 50rpx;
+  right: 30rpx;
   bottom: 0;
   pointer-events: none;
 }
