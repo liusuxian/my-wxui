@@ -2,7 +2,7 @@
  * @Author: liusuxian 382185882@qq.com
  * @Date: 2024-10-13 12:42:32
  * @LastEditors: liusuxian 382185882@qq.com
- * @LastEditTime: 2025-02-12 00:08:34
+ * @LastEditTime: 2025-02-14 17:19:58
  * @Description:
  *
  * Copyright (c) 2024 by liusuxian email: 382185882@qq.com, All Rights Reserved.
@@ -163,13 +163,13 @@ Component({
       if (this.getTabbarObjData().current !== index) {
         getApp().globalData.tabBar.current = index;
         this.setData({ current: index });
-      }
-      // 跳转页面
-      let linkType = this.data.linkType;
-      if (dataset.pagePath && wx[linkType]) {
-        return wx[linkType]({
-          url: dataset.pagePath,
-        });
+        // 跳转页面
+        let linkType = this.data.linkType;
+        if (dataset.pagePath && wx[linkType]) {
+          return wx[linkType]({
+            url: dataset.pagePath,
+          });
+        }
       }
     },
   },
