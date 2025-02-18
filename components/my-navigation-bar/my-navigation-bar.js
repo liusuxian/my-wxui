@@ -2,7 +2,7 @@
  * @Author: liusuxian 382185882@qq.com
  * @Date: 2024-02-21 17:33:53
  * @LastEditors: liusuxian 382185882@qq.com
- * @LastEditTime: 2024-10-14 19:08:52
+ * @LastEditTime: 2025-02-18 20:04:01
  * @Description:
  *
  * Copyright (c) 2024 by liusuxian email: 382185882@qq.com, All Rights Reserved.
@@ -112,11 +112,6 @@ Component({
     scrollRatio: {
       type: Number,
       value: 0.3,
-    },
-    // 是否自定义NavigationBar内容
-    custom: {
-      type: Boolean,
-      value: false,
     },
     // 是否留出顶部安全距离（状态栏高度）
     safeAreaInsetTop: {
