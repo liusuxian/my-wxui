@@ -27,7 +27,7 @@
   </view>
   <view wx:if="{{!forbidAdd && imageList.length < limit}}"
     class="my-upload-add {{borderColor !== 'transparent' ? 'my-upload__border' : 'my-upload__unborder'}}"
-    style="width: {{utils.addUnit(width, unit)}}; height: {{utils.addUnit(height, unit)}}; background: {{background}}; border-radius: {{utils.addUnit(radius, unit)}}; border-color: {{borderColor}}; border-style: {{borderSytle}};"
+    style="width: {{utils.addUnit(width, unit)}}; height: {{utils.addUnit(height, unit)}}; background: {{background}}; border-radius: {{utils.addUnit(radius, unit)}}; border-color: {{borderColor}}; border-style: {{borderStyle}};"
     bindtap="chooseImage">
     <view wx:if="{{!custom}}" class="{{utils.bem('upload-icon', ['plus'])}}"
       style="color: {{addColor}}; font-size: {{utils.addUnit(addSize, unit)}};">

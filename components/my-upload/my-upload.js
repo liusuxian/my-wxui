@@ -2,7 +2,7 @@
  * @Author: liusuxian 382185882@qq.com
  * @Date: 2024-08-15 14:40:12
  * @LastEditors: liusuxian 382185882@qq.com
- * @LastEditTime: 2024-12-14 00:58:53
+ * @LastEditTime: 2025-04-24 00:28:12
  * @Description:
  *
  * Copyright (c) 2024 by liusuxian email: 382185882@qq.com, All Rights Reserved.
@@ -51,7 +51,7 @@ Component({
       value: "transparent",
     },
     // 选择框边框样式类型，可选值：solid、dashed、dotted
-    borderSytle: {
+    borderStyle: {
       type: String,
       value: "dashed",
     },
@@ -206,8 +206,8 @@ Component({
           path: item,
         });
       }
-      this.data.tempFiles = tempFiles;
       this.setData({
+        tempFiles: tempFiles,
         imageList: [...imgArr],
         statusArr: status,
       });
@@ -246,8 +246,8 @@ Component({
      * @param manual 是否手动上传
      **/
     change(manual = false) {
-      let status = ~this.data.statusArr.indexOf("2") ? 2 : 1;
-      if (status != 2 && ~this.data.statusArr.indexOf("3")) {
+      let status = this.data.statusArr.indexOf("2") >= 0 ? 2 : 1;
+      if (status != 2 && this.data.statusArr.indexOf("3") >= 0) {
         // 上传失败
         status = 3;
       }
@@ -273,7 +273,7 @@ Component({
         count: _this.data.limit - _this.data.imageList.length,
         sizeType: _this.data.sizeType,
         sourceType: _this.data.sourceType,
-        success: function (e) {
+        success: (e) => {
           let imageArr = [];
           let status = [];
           let tempFiles = [];
@@ -356,14 +356,14 @@ Component({
         wx.compressImage({
           src: url,
           quality: _this.data.compressQuality,
-          success(compressRes) {
+          success: (compressRes) => {
             wx.uploadFile({
               url: _this.data.serverUrl || serverUrl,
               name: _this.data.fileKeyName,
               header: _this.data.header,
               formData: _this.data.formData,
               filePath: compressRes.tempFilePath,
-              success(res) {
+              success: (res) => {
                 if (res.statusCode === 200 && res.data.length > 0) {
                   let resData = JSON.parse(res.data);
                   if (resData.code === 0) {
@@ -389,7 +389,7 @@ Component({
                   reject(index);
                 }
               },
-              fail(e) {
+              fail: (e) => {
                 // 上传失败
                 _this.setData({
                   [status]: "3",
@@ -398,7 +398,7 @@ Component({
               },
             });
           },
-          fail(e) {
+          fail: (e) => {
             // 上传失败
             _this.setData({
               [status]: "3",
@@ -418,7 +418,7 @@ Component({
           header: _this.data.header,
           formData: _this.data.formData,
           filePath: url,
-          success(res) {
+          success: (res) => {
             if (res.statusCode === 200 && res.data.length > 0) {
               let resData = JSON.parse(res.data);
               if (resData.code === 0) {
@@ -444,7 +444,7 @@ Component({
               reject(index);
             }
           },
-          fail(e) {
+          fail: (e) => {
             // 上传失败
             _this.setData({
               [status]: "3",
@@ -483,7 +483,7 @@ Component({
           cancelColor: "#555",
           confirmColor: "#eb0909",
           confirmText: "确定",
-          success(res) {
+          success: (res) => {
             if (res.confirm) {
               _this.delConfirmExec(index);
             }
@@ -514,7 +514,10 @@ Component({
       const len = imageArr.length;
       for (let i = 0; i < len; i++) {
         // 如果是服务器地址图片则无需再次上传
-        if (imageArr[i].startsWith("http")) {
+        if (
+          imageArr[i].startsWith("http://") ||
+          imageArr[i].startsWith("https://")
+        ) {
           continue;
         } else {
           let status = `statusArr[${i}]`;
@@ -552,12 +555,12 @@ Component({
     upload(callback, index) {
       // 传入一个返回Promise的文件上传的函数
       // 上传状态：0-重置上传 1-上传成功 2-上传中 3-上传失败
-      this.data.callUpload = true;
+      this.setData({ callUpload: true });
       if (index === undefined || index === null) {
         let urls = [...this.data.imageList];
         const len = urls.length;
         for (let i = 0; i < len; i++) {
-          if (urls[i].startsWith("https")) {
+          if (urls[i].startsWith("http://") || urls[i].startsWith("https://")) {
             continue;
           } else {
             let status = `statusArr[${i}]`;
@@ -584,7 +587,7 @@ Component({
         }
       } else {
         // 如果传入index，则是重新上传时调用
-        let status = `statusArr[${i}]`;
+        let status = `statusArr[${index}]`;
         this.setData({
           [status]: "2",
         });
