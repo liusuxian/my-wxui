@@ -2,7 +2,7 @@
  * @Author: liusuxian 382185882@qq.com
  * @Date: 2024-10-13 12:42:32
  * @LastEditors: liusuxian 382185882@qq.com
- * @LastEditTime: 2025-02-14 17:19:58
+ * @LastEditTime: 2025-05-01 20:50:25
  * @Description:
  *
  * Copyright (c) 2024 by liusuxian email: 382185882@qq.com, All Rights Reserved.
@@ -66,11 +66,6 @@ Component({
       type: Boolean,
       value: true,
     },
-    // 链接跳转类型，可选值为 redirectTo、switchTab、reLaunch
-    linkType: {
-      type: String,
-      value: "redirectTo",
-    },
     // 角标字体颜色
     badgeColor: {
       type: String,
@@ -123,7 +118,7 @@ Component({
   },
   lifetimes: {
     attached() {
-      let objData = this.getTabbarObjData();
+      const objData = this.getTabbarObjData();
       this.setData({
         current: objData.current,
         list: objData.list,
@@ -158,17 +153,14 @@ Component({
       });
     },
     tabbarSwitch(e) {
-      let dataset = e.currentTarget.dataset;
-      let index = Number(dataset.index);
+      const dataset = e.currentTarget.dataset;
+      const index = Number(dataset.index);
       if (this.getTabbarObjData().current !== index) {
         getApp().globalData.tabBar.current = index;
         this.setData({ current: index });
         // 跳转页面
-        let linkType = this.data.linkType;
-        if (dataset.pagePath && wx[linkType]) {
-          return wx[linkType]({
-            url: dataset.pagePath,
-          });
+        if (dataset.pagePath) {
+          return wx.redirectTo({ url: dataset.pagePath });
         }
       }
     },
