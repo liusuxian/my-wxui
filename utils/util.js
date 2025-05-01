@@ -2,7 +2,7 @@
  * @Author: liusuxian 382185882@qq.com
  * @Date: 2024-10-10 17:50:30
  * @LastEditors: liusuxian 382185882@qq.com
- * @LastEditTime: 2024-10-10 17:50:48
+ * @LastEditTime: 2025-05-01 16:13:17
  * @Description:
  *
  * Copyright (c) 2024 by liusuxian email: 382185882@qq.com, All Rights Reserved.
@@ -42,17 +42,29 @@ const getCurrentPage = () => {
 /**
  * @description: 对象转URL参数
  * @param {Object} params 参数
+ * @param {Object} options 选项
+ * @param {Array} options.excludeKeys 排除的key
+ * @param {Array} options.includeKeys 包含的key（当不为空时，只处理该数组中的key）
  * @return {String} 返回URL参数
  */
-const queryParams = (params) => {
+const queryParams = (params, { excludeKeys = [], includeKeys = [] }) => {
   var paramStr = "";
-  Object.keys(params).forEach((item) => {
+  let keys = Object.keys(params);
+  // 如果 includeKeys 不为空，则只处理 includeKeys 中的键
+  if (includeKeys.length > 0) {
+    keys = includeKeys.filter((key) => key in params);
+  }
+  keys.forEach((item) => {
+    // 排除在 excludeKeys 中的键
+    if (excludeKeys.includes(item)) {
+      return;
+    }
     if (paramStr === "") {
-      if (params[item]) {
+      if (params[item] !== undefined && params[item] !== null) {
         paramStr = `?${item}=${params[item]}`;
       }
     } else {
-      if (params[item]) {
+      if (params[item] !== undefined && params[item] !== null) {
         paramStr = `${paramStr}&${item}=${params[item]}`;
       }
     }
