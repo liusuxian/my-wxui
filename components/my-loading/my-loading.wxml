@@ -1,0 +1,15 @@
+<wxs src="../my-wxs/utils.wxs" module="utils"></wxs>
+
+<view>
+  <view wx:if="{{type === 'column'}}" class="custom-class {{utils.bem('loading', ['box', fixed ? 'fixed' : '' ])}}"
+    style="background-color: {{backgroundColor}}; color: {{color}}; position: {{fixed ? 'fixed' : 'static'}}">
+    <image class="my-loading__ani" src="{{src}}"></image>
+    <view class="my-loading__text">{{text}}</view>
+  </view>
+  <view wx:else class="{{utils.bem('loading', ['row', fixed ? 'fixed' : '' ])}}"
+    style="position: {{fixed ? 'fixed' : 'static'}}">
+    <image class="my-loading-row__ani" src="{{rowsrc}}"></image>
+    <view class="my-loading__text">{{text}}</view>
+  </view>
+  <view wx:if="{{isMask && fixed}}" class="my-loading__mask" style="background: {{maskColor}};"></view>
+</view>
